@@ -1,10 +1,10 @@
-import Image from "next/image";
-import { Chakra_Petch } from "next/font/google";
-import Card_1 from "../components/Card_1";
+import Image from 'next/image';
+import { Chakra_Petch } from 'next/font/google';
+import Card_1 from '../components/Card_1';
 
 const chakra = Chakra_Petch({
-  subsets: ["latin"],
-  weight: ["300", "400", "600"],
+  subsets: ['latin'],
+  weight: ['300', '400', '600'],
 });
 
 export default function Home() {
@@ -14,7 +14,8 @@ export default function Home() {
         <nav></nav>
       </header>
       <main className={chakra.className}>
-        <section><div className="relative bg-none">
+        <section className="bg-white">
+          <div className="relative bg-none">
             <div className="container mx-auto px-4 text-center py-24">
               <h1 className="text-gray-900 font-chakra text-2xl font-normal leading-9 mt-24">
                 Ampliando los horizontes financieros de tus hijos
@@ -58,9 +59,18 @@ export default function Home() {
                     y2="397.619"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#6B28BB" stop-opacity="0.6" />
-                    <stop offset="0.505208" stop-color="#9855E9" />
-                    <stop offset="0.676897" stop-color="#CFB0F8" />
+                    <stop
+                      stop-color="#6B28BB"
+                      stop-opacity="0.6"
+                    />
+                    <stop
+                      offset="0.505208"
+                      stop-color="#9855E9"
+                    />
+                    <stop
+                      offset="0.676897"
+                      stop-color="#CFB0F8"
+                    />
                   </linearGradient>
                 </defs>
               </svg>
@@ -91,8 +101,14 @@ export default function Home() {
                     gradientUnits="userSpaceOnUse"
                   >
                     <stop stop-color="#6B28BB" />
-                    <stop offset="0.465" stop-color="#B381F2" />
-                    <stop offset="1" stop-color="#F0E6FE" />
+                    <stop
+                      offset="0.465"
+                      stop-color="#B381F2"
+                    />
+                    <stop
+                      offset="1"
+                      stop-color="#F0E6FE"
+                    />
                   </linearGradient>
                 </defs>
               </svg>
@@ -123,8 +139,14 @@ export default function Home() {
                     gradientUnits="userSpaceOnUse"
                   >
                     <stop stop-color="#9855E9" />
-                    <stop offset="0.505208" stop-color="#CFB0F8" />
-                    <stop offset="1" stop-color="#F0E6FE" />
+                    <stop
+                      offset="0.505208"
+                      stop-color="#CFB0F8"
+                    />
+                    <stop
+                      offset="1"
+                      stop-color="#F0E6FE"
+                    />
                   </linearGradient>
                 </defs>
               </svg>
@@ -151,7 +173,11 @@ export default function Home() {
                 Para los maestros
               </h2>
               <p className="text-center text-gray-700 font-chakra text-base font-normal leading-6">
-                Ofrecemos a los educadores una variedad de recursos y herramientas para apoyar su enseñanza de educación financiera en el aula. Nos esforzamos por ser un recurso integral para educadores que desean enseñar educación financiera de manera efectiva y emocionante.
+                Ofrecemos a los educadores una variedad de recursos y
+                herramientas para apoyar su enseñanza de educación financiera en
+                el aula. Nos esforzamos por ser un recurso integral para
+                educadores que desean enseñar educación financiera de manera
+                efectiva y emocionante.
               </p>
             </div>
             <div className="rounded-3xl bg-purple-200 bg-opacity-20 flex flex-col items-center justify-center mx-auto w-full max-w-md h-72 p-4">
@@ -159,7 +185,11 @@ export default function Home() {
                 Para los estudiantes
               </h2>
               <p className="text-center text-gray-700 font-chakra text-base font-normal leading-6">
-                Los niños pueden aprender sobre el mundo de las finanzas de una manera divertida y accesible. Desde entender el valor del dinero hasta aprender a ahorrar y gastar de manera inteligente, el programa de FinCity hace que el aprendizaje sobre finanzas sea fácil y entretenido.
+                Los niños pueden aprender sobre el mundo de las finanzas de una
+                manera divertida y accesible. Desde entender el valor del dinero
+                hasta aprender a ahorrar y gastar de manera inteligente, el
+                programa de FinCity hace que el aprendizaje sobre finanzas sea
+                fácil y entretenido.
               </p>
             </div>
           </section>
@@ -189,19 +219,28 @@ export default function Home() {
             </div>
 
             <div className="carousel w-full">
-              <div id="item1" className="carousel-item w-full">
+              <div
+                id="item1"
+                className="carousel-item w-full"
+              >
                 <Card_1
                   title="Seguimiento de Tareas y Ganancias 1"
                   content="Los padres pueden marcar las tareas completadas a medida que las realizan. Cada tarea completada les otorga una cantidad específica de dinero virtual, que se acumula en su cuenta."
                 ></Card_1>
               </div>
-              <div id="item2" className="carousel-item w-full">
+              <div
+                id="item2"
+                className="carousel-item w-full"
+              >
                 <Card_1
                   title="Asignación de Tareas: "
                   content="El maestro en conjunto con los padres pueden asignar tareas domésticas a sus hijos directamente a través de la aplicación. Desde hacer la cama hasta ayudar con la limpieza, las tareas se pueden personalizar según las necesidades y la edad del niño."
                 ></Card_1>
               </div>
-              <div id="item3" className="carousel-item w-full">
+              <div
+                id="item3"
+                className="carousel-item w-full"
+              >
                 <Card_1
                   title="Canje de Recompensas:"
                   content="Cuando los niños hayan alcanzado suficiente dinero, ¡pueden canjearlo por recompensas emocionantes! Las opciones de recompensas son personalizables y están diseñadas para motivar y reforzar el comportamiento positivo."
@@ -209,13 +248,22 @@ export default function Home() {
               </div>
             </div>
             <div className="flex justify-center w-full py-2 gap-2">
-              <a href="#item1" className="btn btn-xs">
+              <a
+                href="#item1"
+                className="btn btn-xs"
+              >
                 1
               </a>
-              <a href="#item2" className="btn btn-xs">
+              <a
+                href="#item2"
+                className="btn btn-xs"
+              >
                 2
               </a>
-              <a href="#item3" className="btn btn-xs">
+              <a
+                href="#item3"
+                className="btn btn-xs"
+              >
                 3
               </a>
             </div>
@@ -230,7 +278,7 @@ export default function Home() {
             </p>
           </div>
         </section>
-        <section className="relative min-h-96 flex flex-col justify-center items-center gap-6 text-center p-8 bg-[#5D269A]">
+        <section className="text-[#09090b] relative min-h-96 flex flex-col justify-center items-center gap-6 text-center p-8 bg-[#5D269A]">
           <div className="absolute inset-0 overflow-hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +306,10 @@ export default function Home() {
                   filterUnits="userSpaceOnUse"
                   color-interpolation-filters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feFlood
+                    flood-opacity="0"
+                    result="BackgroundImageFix"
+                  />
                   <feColorMatrix
                     in="SourceAlpha"
                     type="matrix"
@@ -267,7 +318,10 @@ export default function Home() {
                   />
                   <feOffset dy="4" />
                   <feGaussianBlur stdDeviation="2" />
-                  <feComposite in2="hardAlpha" operator="out" />
+                  <feComposite
+                    in2="hardAlpha"
+                    operator="out"
+                  />
                   <feColorMatrix
                     type="matrix"
                     values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"
@@ -293,8 +347,14 @@ export default function Home() {
                   gradientUnits="userSpaceOnUse"
                 >
                   <stop stop-color="#9855E9" />
-                  <stop offset="0.505208" stop-color="#B381F2" />
-                  <stop offset="1" stop-color="#F0E6FE" />
+                  <stop
+                    offset="0.505208"
+                    stop-color="#B381F2"
+                  />
+                  <stop
+                    offset="1"
+                    stop-color="#F0E6FE"
+                  />
                 </linearGradient>
               </defs>
             </svg>
