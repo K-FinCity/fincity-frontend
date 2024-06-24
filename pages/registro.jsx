@@ -1,6 +1,8 @@
 import { Chakra_Petch } from 'next/font/google';
 import Link from 'next/link';
 
+import { useForm } from 'react-hook-form';
+
 const chakra = Chakra_Petch({
   subsets: ['latin'],
   weight: ['300', '400', '600'],
