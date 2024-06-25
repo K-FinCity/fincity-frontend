@@ -3,12 +3,22 @@ import Link from 'next/link';
 
 import { useForm } from 'react-hook-form';
 
+import ErrorMessage from '../components/ErrorMessage';
+
 const chakra = Chakra_Petch({
   subsets: ['latin'],
   weight: ['300', '400', '600'],
 });
 
 export default function Page() {
+  const {
+    register,
+    watch,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
+
   return (
     <>
       <div className="relative">
@@ -43,7 +53,10 @@ export default function Page() {
       <main className={`${chakra.className} mt-5 p-5`}>
         <h1 className="text-5xl font-bold">Comencemos...</h1>
         <h2 className="mt-3 text-base">Crea tu nueva cuenta</h2>
-        <form className="flex flex-col  items-center gap-6 mt-8 ">
+        <form
+          className="flex flex-col  items-center gap-6 mt-8"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <label className="input input-bordered flex items-center gap-2 w-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,8 +70,22 @@ export default function Page() {
               type="text"
               className="grow"
               placeholder="Nombre completo"
+              {...register('fullName', {
+                required: 'El nombre es necesario.',
+                minLength: {
+                  value: 8,
+                  message: 'El nombre es demasiado corto.',
+                },
+                pattern: {
+                  value: /^[a-zA-Z\\s]+/,
+                  message: 'No parece un nombre válido.',
+                },
+              })}
             />
           </label>
+
+          {errors?.fullName && <ErrorMessage msg={errors?.fullName.message} />}
+
           <label className="input input-bordered flex items-center gap-2 w-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -73,8 +100,23 @@ export default function Page() {
               type="text"
               className="grow"
               placeholder="Correo electrónico"
+              {...register('mail', {
+                required: 'El correo electrónico es necesario.',
+                minLength: {
+                  value: 8,
+                  message: 'Se nececitan mínimo 8 caracteres.',
+                },
+                pattern: {
+                  value: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
+                  message:
+                    'Es necesario al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.',
+                },
+              })}
             />
           </label>
+
+          {errors?.mail && <ErrorMessage msg={errors?.mail.message} />}
+
           <label className="input input-bordered flex items-center gap-2 w-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -92,8 +134,20 @@ export default function Page() {
               type="password"
               className="grow"
               placeholder="Contraseña"
+              {...register('password', {
+                required: 'La contraseña es necesaria.',
+                minLength: {
+                  value: 8,
+                  message: 'Se nececitan mínimo 8 caracteres.',
+                },
+                pattern:
+                  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
+              })}
             />
           </label>
+
+          {errors?.password && <ErrorMessage msg={errors?.password.message} />}
+
           <label className="input input-bordered flex items-center gap-2 w-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -111,8 +165,21 @@ export default function Page() {
               type="password"
               className="grow"
               placeholder="Vuelve a escribir la contraseña"
+              {...register('confirmPassword', {
+                required: 'Es necesario volver a escribir la contraseña.',
+                validate: (val) => {
+                  if (watch('password') != val) {
+                    return 'La contraseña no coincide.';
+                  }
+                },
+              })}
             />
           </label>
+
+          {errors?.confirmPassword && (
+            <ErrorMessage msg={errors?.confirmPassword.message} />
+          )}
+
           <span className="text-center text-sm p-3">
             Al crear la cuenta usted acepta los{' '}
             <Link
