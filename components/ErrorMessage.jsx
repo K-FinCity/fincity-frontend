@@ -1,7 +1,7 @@
 export default function ErrorMessage({ msg }) {
   return (
     <div
-      class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 w-full"
+      class="flex items-center p-4 -mt-5 mb-3 text-sm text-red-800 rounded-lg bg-red-50 w-full"
       role="alert"
     >
       <svg
@@ -15,7 +15,7 @@ export default function ErrorMessage({ msg }) {
       </svg>
       <span class="sr-only">Error</span>
       <div>
-        <span class="font-medium">Error</span> {msg}
+        <span class="font-medium">¡Error!:</span> {msg}
       </div>
     </div>
   );
