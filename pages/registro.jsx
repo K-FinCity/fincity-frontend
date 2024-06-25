@@ -57,7 +57,7 @@ export default function Page() {
           className="flex flex-col  items-center gap-6 mt-8"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <label className="input input-bordered flex items-center gap-2 w-full">
+          <label className="input input-bordered flex items-center gap-2 w-full bg-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -68,7 +68,7 @@ export default function Page() {
             </svg>
             <input
               type="text"
-              className="grow"
+              className="grow bg-white"
               placeholder="Nombre completo"
               {...register('fullName', {
                 required: 'El nombre es necesario.',
@@ -86,7 +86,7 @@ export default function Page() {
 
           {errors?.fullName && <ErrorMessage msg={errors?.fullName.message} />}
 
-          <label className="input input-bordered flex items-center gap-2 w-full">
+          <label className="input input-bordered flex items-center gap-2 w-full bg-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -117,7 +117,7 @@ export default function Page() {
 
           {errors?.mail && <ErrorMessage msg={errors?.mail.message} />}
 
-          <label className="input input-bordered flex items-center gap-2 w-full">
+          <label className="input input-bordered flex items-center gap-2 w-full bg-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -148,7 +148,7 @@ export default function Page() {
 
           {errors?.password && <ErrorMessage msg={errors?.password.message} />}
 
-          <label className="input input-bordered flex items-center gap-2 w-full">
+          <label className="input input-bordered flex items-center gap-2 w-full bg-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -213,7 +213,7 @@ export default function Page() {
 
         <button
           type="button"
-          class="py-2 px-4 flex justify-center items-center  hover:bg-purple-600 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+          class="py-2 px-4 flex justify-center items-center hover:bg-purple-600 w-full transition ease-in duration-200 text-center text-base font-semibold  border focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg border-3"
         >
           <svg
             width="20"
