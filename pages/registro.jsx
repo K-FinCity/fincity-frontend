@@ -18,13 +18,34 @@ export default function Page() {
     handleSubmit,
     reset,
   } = useForm();
-  const onSubmit = (data) => {
-    reset();
-    console.log(data);
+
+  const onSubmit = async (data) => {
+    try {
+      //reset();
+      delete data.confirmPassword;
+
+      console.log({ ...data, role: '6676ee3c23f3b664bbf5f50d', user: null });
+
+      const r = await fetch('http://localhost:3002/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        body: JSON.stringify({
+          ...data,
+          role: '6676ee3c23f3b664bbf5f50d',
+          user: null,
+        }),
+      });
+
+      const response = await r.json();
+
+      console.log(response);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
-    <div className="flex flex-row-reverse lg:min-h-screen w-screen bg-red-300">
+    <div className="flex flex-col lg:flex-row-reverse lg:min-h-screen w-screen">
       <div className="relative">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -77,13 +98,11 @@ export default function Page() {
           />
         </svg>
       </div>
-      <main
-        className={`${chakra.className} mt-5 p-5 md:p-9 lg:w-1/4 bg-red-200`}
-      >
+      <main className={`${chakra.className} mt-5 p-5 md:p-9 lg:w-1/4`}>
         <h1 className="text-5xl font-bold">Comencemos...</h1>
         <h2 className="mt-3 text-base">Crea tu nueva cuenta</h2>
         <form
-          className="flex flex-col  items-center gap-6 mt-8"
+          className="flex flex-col items-center gap-6 mt-8"
           onSubmit={handleSubmit(onSubmit)}
         >
           <label className="input input-bordered flex items-center gap-2 w-full bg-white">
@@ -98,22 +117,47 @@ export default function Page() {
             <input
               type="text"
               className="grow bg-white"
-              placeholder="Nombre completo"
-              {...register('fullName', {
+              placeholder="Nombre"
+              {...register('first_name', {
                 required: 'El nombre es necesario.',
-                minLength: {
-                  value: 8,
-                  message: 'El nombre es demasiado corto.',
-                },
                 pattern: {
-                  value: /^[a-zA-Z\\s]+/,
+                  value: /^\S*$/,
                   message: 'No parece un nombre válido.',
                 },
               })}
             />
           </label>
 
-          {errors?.fullName && <ErrorMessage msg={errors?.fullName.message} />}
+          {errors?.first_name && (
+            <ErrorMessage msg={errors?.first_name.message} />
+          )}
+
+          <label className="input input-bordered flex items-center gap-2 w-full bg-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="h-4 w-4 opacity-70"
+            >
+              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
+            </svg>
+            <input
+              type="text"
+              className="grow bg-white"
+              placeholder="Apellido"
+              {...register('last_name', {
+                required: 'El nombre es necesario.',
+                pattern: {
+                  value: /^\S*$/,
+                  message: 'No parece un nombre válido.',
+                },
+              })}
+            />
+          </label>
+
+          {errors?.last_name && (
+            <ErrorMessage msg={errors?.last_name.message} />
+          )}
 
           <label className="input input-bordered flex items-center gap-2 w-full bg-white">
             <svg
@@ -129,7 +173,7 @@ export default function Page() {
               type="text"
               className="grow"
               placeholder="Correo electrónico"
-              {...register('mail', {
+              {...register('email', {
                 required: 'El correo electrónico es necesario.',
                 minLength: {
                   value: 8,
@@ -144,7 +188,7 @@ export default function Page() {
             />
           </label>
 
-          {errors?.mail && <ErrorMessage msg={errors?.mail.message} />}
+          {errors?.email && <ErrorMessage msg={errors?.email.message} />}
 
           <label className="input input-bordered flex items-center gap-2 w-full bg-white">
             <svg
