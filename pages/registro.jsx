@@ -40,15 +40,13 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row-reverse lg:min-h-screen w-screen">
-      <div className="relative">
+    <div className="flex flex-col xl:flex-row-reverse xl:min-h-screen w-screen">
+      <div className="relative xl:w-1/2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="430"
-          height="171"
           viewBox="0 0 430 171"
           fill="none"
-          className="absolute"
+          className="absolute xl:hidden"
         >
           <path
             d="M0 0H430V137.453C399.406 125.945 366.017 124.112 334.347 132.2L282.5 145.441L180.098 168.042C161.738 172.094 142.609 170.888 124.903 164.563L0 119.943V0Z"
@@ -58,10 +56,9 @@ export default function Page() {
         </svg>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="430"
-          height="179"
           viewBox="0 0 430 179"
           fill="none"
+          className="xl:hidden"
         >
           <path
             d="M0 0H430V156.496H414.792C392.784 156.496 370.88 153.484 349.689 147.545C323.879 140.31 296.794 138.839 270.352 143.236L61.0452 178.037C32.8884 182.719 6.01818 164.462 0 136.56V0Z"
@@ -69,12 +66,42 @@ export default function Page() {
             fill-opacity="0.5"
           />
         </svg>
+
+        {/* DESKTOP */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 504 832"
+          fill="none"
+          className="hidden xl:block absolute h-full top-0 end-0"
+        >
+          <path
+            d="M504 0L504 832L100.107 832C132.969 774.469 138.14 705.189 114.183 643.417L76.635 546.605L5.82239 335.34C-2.99365 309.038 -0.488037 280.256 12.7404 255.873L151.558 0L504 0Z"
+            fill="#8B3FDE"
+            fill-opacity="0.7"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 428 832"
+          fill="none"
+          className="hidden xl:block absolute h-full top-0 end-0"
+        >
+          <path
+            d="M428 0L428 832L53.7185 832V803.503C53.7185 760.404 60.9219 717.608 75.0311 676.884C92.2891 627.072 95.7964 573.527 85.1837 521.889L2.94284 121.73C-8.41144 66.4834 28.1437 12.7828 83.7054 3.08729L101.398 0L428 0Z"
+            fill="#682BA4"
+            fill-opacity="0.5"
+          />
+        </svg>
       </div>
-      <main className={`${chakra.className} mt-5 p-5 md:p-9 lg:w-1/4`}>
-        <h1 className="text-5xl font-bold">Comencemos...</h1>
-        <h2 className="mt-3 text-base">Crea tu nueva cuenta</h2>
+      <main
+        className={`${chakra.className} mt-5 p-5 md:p-9 xl:w-full flex flex-col justify-center items-center`}
+      >
+        <div className="xl:max-w-lg xl:w-full">
+          <h1 className="text-5xl font-bold xl:text-start">Comencemos...</h1>
+          <h2 className="mt-3 text-base">Crea tu nueva cuenta</h2>
+        </div>
         <form
-          className="flex flex-col items-center gap-6 mt-8"
+          className="flex flex-col items-center gap-6 mt-8 max-w-xl"
           onSubmit={handleSubmit(onSubmit)}
         >
           <label className="input input-bordered flex items-center gap-2 w-full bg-white">
@@ -249,8 +276,8 @@ export default function Page() {
           </button>
         </form>
 
-        <div className="inline-flex items-center justify-center w-full">
-          <hr className="w-64 h-px my-8 bg-gray-600 border-0 " />
+        <div className="inline-flex items-center justify-center w-full max-w-xl relative ">
+          <hr className="w-64 h-px my-6 bg-gray-600 border-0 " />
           <span className="absolute px-3 font-medium text-gray-900 -translate-x-1/2 left-1/2 bg-white ">
             o
           </span>
@@ -258,19 +285,47 @@ export default function Page() {
 
         <button
           type="button"
-          class="py-2 px-4 flex justify-center items-center hover:bg-purple-600 w-full transition ease-in duration-200 text-center text-base font-semibold  border focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg border-3"
+          class="mb-3 py-2 px-4 flex justify-center items-center relative *:hover:absolute *:hover:start-1/2 *:hover:transform *:hover:-translate-x-1/2  *:hover:ease-in *:hover:duration-200 hover:bg-purple-600 hover:text-purple-600 transition ease-in duration-200 text-center text-purple-600 text-base font-semibold border border-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-xl border-3 w-80"
           onClick={() => signIn('google')}
         >
           <svg
+            xmlns="http://www.w3.org/2000/svg"
             width="20"
             height="20"
-            class="mr-2"
-            viewBox="0 0 1792 1792"
-            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+            data-name="Layer 1"
+            className="me-2"
           >
-            <path d="M896 786h725q12 67 12 128 0 217-91 387.5t-259.5 266.5-386.5 96q-157 0-299-60.5t-245-163.5-163.5-245-60.5-299 60.5-299 163.5-245 245-163.5 299-60.5q300 0 515 201l-209 201q-123-119-306-119-129 0-238.5 65t-173.5 176.5-64 243.5 64 243.5 173.5 176.5 238.5 65q87 0 160-24t120-60 82-82 51.5-87 22.5-78h-436v-264z"></path>
+            <path
+              d="M23.75,16A7.7446,7.7446,0,0,1,8.7177,18.6259L4.2849,22.1721A13.244,13.244,0,0,0,29.25,16"
+              fill="#00ac47"
+            />
+            <path
+              d="M23.75,16a7.7387,7.7387,0,0,1-3.2516,6.2987l4.3824,3.5059A13.2042,13.2042,0,0,0,29.25,16"
+              fill="#4285f4"
+            />
+            <path
+              d="M8.25,16a7.698,7.698,0,0,1,.4677-2.6259L4.2849,9.8279a13.177,13.177,0,0,0,0,12.3442l4.4328-3.5462A7.698,7.698,0,0,1,8.25,16Z"
+              fill="#ffba00"
+            />
+            <polygon
+              fill="#2ab2db"
+              points="8.718 13.374 8.718 13.374 8.718 13.374 8.718 13.374"
+            />
+            <path
+              d="M16,8.25a7.699,7.699,0,0,1,4.558,1.4958l4.06-3.7893A13.2152,13.2152,0,0,0,4.2849,9.8279l4.4328,3.5462A7.756,7.756,0,0,1,16,8.25Z"
+              fill="#ea4435"
+            />
+            <polygon
+              fill="#2ab2db"
+              points="8.718 18.626 8.718 18.626 8.718 18.626 8.718 18.626"
+            />
+            <path
+              d="M29.25,15v1L27,19.5H16.5V14H28.25A1,1,0,0,1,29.25,15Z"
+              fill="#4285f4"
+            />
           </svg>
-          Sign in with Google
+          Crea cuenta con Google
         </button>
         <p className="text-center text-sm p-3">
           ¿Ya tienes una cuenta?{' '}
