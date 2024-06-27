@@ -7,6 +7,11 @@ import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 
 import ErrorMessage from '../components/ErrorMessage';
+import { useEffect } from 'react';
+
+import { useSearchParams } from 'next/navigation';
+import { ToastContainer, toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const chakra = Chakra_Petch({
   subsets: ['latin'],
@@ -38,6 +43,26 @@ export default function Page() {
       console.error(e);
     }
   };
+
+  const searchParams = useSearchParams();
+  const error = searchParams.get('error');
+
+  const notify = () =>
+    toast.error(error, {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+      transition: Zoom,
+    });
+
+  useEffect(() => {
+    if (error) notify();
+  }, [searchParams]);
 
   return (
     <div className="flex flex-col xl:flex-row-reverse xl:min-h-screen w-screen">
@@ -337,6 +362,7 @@ export default function Page() {
           </Link>
         </p>
       </main>
+      <ToastContainer />
     </div>
   );
 }
