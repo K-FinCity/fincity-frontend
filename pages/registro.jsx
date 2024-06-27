@@ -1,5 +1,6 @@
 import { Chakra_Petch } from 'next/font/google';
 import Link from 'next/link';
+import API from '../services/API';
 
 import { useForm } from 'react-hook-form';
 
@@ -16,28 +17,21 @@ export default function Page() {
     watch,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      //reset();
       delete data.confirmPassword;
+      const user = { ...data, role: '6676ee3c23f3b664bbf5f50d', user: null };
 
-      console.log({ ...data, role: '6676ee3c23f3b664bbf5f50d', user: null });
+      const response = await API.createNewUser(user);
 
-      const r = await fetch('http://localhost:3002/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json; charset=utf-8' },
-        body: JSON.stringify({
-          ...data,
-          role: '6676ee3c23f3b664bbf5f50d',
-          user: null,
-        }),
-      });
-
-      const response = await r.json();
-
-      console.log(response);
+      if (response.message === 'Success') {
+        reset();
+      } else {
+        alert(response.message);
+      }
     } catch (e) {
       console.error(e);
     }
