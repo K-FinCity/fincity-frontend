@@ -2,6 +2,8 @@ import { Chakra_Petch } from 'next/font/google';
 import Link from 'next/link';
 import API from '../services/API';
 
+import { signIn } from 'next-auth/react';
+
 import { useForm } from 'react-hook-form';
 
 import ErrorMessage from '../components/ErrorMessage';
@@ -257,6 +259,7 @@ export default function Page() {
         <button
           type="button"
           class="py-2 px-4 flex justify-center items-center hover:bg-purple-600 w-full transition ease-in duration-200 text-center text-base font-semibold  border focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg border-3"
+          onClick={() => signIn('google')}
         >
           <svg
             width="20"
