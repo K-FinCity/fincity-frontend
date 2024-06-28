@@ -1,5 +1,6 @@
 import StudentButton from "@/components/StudentButton";
 import { studentButtons } from "@/constants/studentButton";
+import { useEffect, useState } from "react";
 
 export default function Store() {
   return (

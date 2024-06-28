@@ -1,11 +1,11 @@
 export const studentButtons = [
   {
     title: "Tienda",
-    link: "/",
+    link: "/student/store",
   },
   {
     title: "Perfil",
-    link: "/",
+    link: `/student`,
   },
   {
     title: "Tareas",
