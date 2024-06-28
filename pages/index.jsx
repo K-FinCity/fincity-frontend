@@ -5,8 +5,9 @@ import skullCrasher from "../assets/characters/Skullcrasher.webp";
 import listIcon from "../assets/icons/list-icon.webp";
 import pigIcon from "../assets/icons/pig-icon.webp";
 import cartIcon from "../assets/icons/cart-icon.webp";
+import tasksIcon from "../assets/icons/tasks-icon.webp";
 // Import Components
-import CarrouselCard from "../components/CarrouselCard";
+import LandingPageCard from "../components/LandingPageCard";
 
 const chakra = Chakra_Petch({
   subsets: ["latin"],
@@ -197,7 +198,8 @@ export default function Home() {
             </div>
             <Image
               src={skullCrasher}
-              className="hidden md:block justify-center align-middle m-auto"
+              className="hidden md:block md:justify-center md:align-middle md:m-auto"
+              alt="Skullcrasher"
             ></Image>
 
             <div className="bg-purple-200">
@@ -217,25 +219,25 @@ export default function Home() {
               <div className="md:hidden">
                 <div className="carousel w-full">
                   <div id="item1" className="carousel-item w-full">
-                    <CarrouselCard
-                      icon={pigIcon}
+                    <LandingPageCard
+                      icon={tasksIcon}
                       title="Seguimiento de Tareas y Ganancias"
                       content="Los padres pueden marcar las tareas completadas a medida que las realizan. Cada tarea completada les otorga una cantidad específica de dinero virtual, que se acumula en su cuenta."
-                    ></CarrouselCard>
+                    ></LandingPageCard>
                   </div>
                   <div id="item2" className="carousel-item w-full">
-                    <CarrouselCard
+                    <LandingPageCard
                       icon={listIcon}
                       title="Asignación de Tareas: "
                       content="El maestro en conjunto con los padres pueden asignar tareas domésticas a sus hijos directamente a través de la aplicación. Desde hacer la cama hasta ayudar con la limpieza, las tareas se pueden personalizar según las necesidades y la edad del niño."
-                    ></CarrouselCard>
+                    ></LandingPageCard>
                   </div>
                   <div id="item3" className="carousel-item w-full">
-                    <CarrouselCard
+                    <LandingPageCard
                       icon={cartIcon}
                       title="Canje de Recompensas:"
                       content="Cuando los niños hayan alcanzado suficiente dinero, ¡pueden canjearlo por recompensas emocionantes! Las opciones de recompensas son personalizables y están diseñadas para motivar y reforzar el comportamiento positivo."
-                    ></CarrouselCard>
+                    ></LandingPageCard>
                   </div>
                 </div>
                 <div className="flex justify-center w-full py-2 gap-2">
@@ -250,7 +252,31 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              <div className="hidden md:block"></div>
+              <div className="hidden md:block">
+                <div className="flex flex-row gap-2 h-96">
+                  <div className="w-2/6 h-80">
+                    <LandingPageCard
+                      icon={pigIcon}
+                      title="Seguimiento de Tareas y Ganancias"
+                      content="Los padres pueden marcar las tareas completadas a medida que las realizan. Cada tarea completada les otorga una cantidad específica de dinero virtual, que se acumula en su cuenta."
+                    ></LandingPageCard>
+                  </div>
+                  <div className="w-2/6 h-80">
+                    <LandingPageCard
+                      icon={listIcon}
+                      title="Asignación de Tareas: "
+                      content="El maestro en conjunto con los padres pueden asignar tareas domésticas a sus hijos directamente a través de la aplicación. Desde hacer la cama hasta ayudar con la limpieza, las tareas se pueden personalizar según las necesidades y la edad del niño."
+                    ></LandingPageCard>
+                  </div>
+                  <div className="w-2/6 h-80">
+                    <LandingPageCard
+                      icon={cartIcon}
+                      title="Canje de Recompensas:"
+                      content="Cuando los niños hayan alcanzado suficiente dinero, ¡pueden canjearlo por recompensas emocionantes! Las opciones de recompensas son personalizables y están diseñadas para motivar y reforzar el comportamiento positivo."
+                    ></LandingPageCard>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="text-center justify-center align-middle p-6 flex flex-col gap-8 pb-36">
               <p className="text-[#09090b] text-base leading-[15px] p-1">
