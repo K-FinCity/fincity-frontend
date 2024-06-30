@@ -10,6 +10,7 @@ import cartIcon from '../assets/icons/cart-icon.webp';
 import tasksIcon from '../assets/icons/tasks-icon.webp';
 // Import Components
 import LandingPageCard from '../components/LandingPageCard';
+import Link from 'next/link';
 
 const chakra = Chakra_Petch({
   subsets: ['latin'],
@@ -424,9 +425,11 @@ export default function Home() {
             brillante para tus hijos y hacer que el aprendizaje sea una
             experiencia emocionante para toda la familia!
           </p>
-          <button className="relative font-bold bg-white text-gray-950 px-5 py-2 rounded-3xl mb-10">
-            Regístrate
-          </button>
+          <Link href={'/registro'}>
+            <button className="relative font-bold bg-white text-gray-950 px-5 py-2 rounded-3xl mb-10">
+              Regístrate
+            </button>
+          </Link>
         </section>
       </main>
 
