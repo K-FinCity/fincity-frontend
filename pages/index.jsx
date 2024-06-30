@@ -1,17 +1,19 @@
-import { Chakra_Petch } from "next/font/google";
+'use client';
+
+import { Chakra_Petch } from 'next/font/google';
 // Import Images
-import Image from "next/image";
-import skullCrasher from "../assets/characters/Skullcrasher.webp";
-import listIcon from "../assets/icons/list-icon.webp";
-import pigIcon from "../assets/icons/pig-icon.webp";
-import cartIcon from "../assets/icons/cart-icon.webp";
-import tasksIcon from "../assets/icons/tasks-icon.webp";
+import Image from 'next/image';
+import skullCrasher from '../assets/characters/Skullcrasher.webp';
+import listIcon from '../assets/icons/list-icon.webp';
+import pigIcon from '../assets/icons/pig-icon.webp';
+import cartIcon from '../assets/icons/cart-icon.webp';
+import tasksIcon from '../assets/icons/tasks-icon.webp';
 // Import Components
-import LandingPageCard from "../components/LandingPageCard";
+import LandingPageCard from '../components/LandingPageCard';
 
 const chakra = Chakra_Petch({
-  subsets: ["latin"],
-  weight: ["300", "400", "600"],
+  subsets: ['latin'],
+  weight: ['300', '400', '600'],
 });
 
 export default function Home() {
@@ -66,9 +68,18 @@ export default function Home() {
                     y2="397.619"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#6B28BB" stop-opacity="0.6" />
-                    <stop offset="0.505208" stop-color="#9855E9" />
-                    <stop offset="0.676897" stop-color="#CFB0F8" />
+                    <stop
+                      stop-color="#6B28BB"
+                      stop-opacity="0.6"
+                    />
+                    <stop
+                      offset="0.505208"
+                      stop-color="#9855E9"
+                    />
+                    <stop
+                      offset="0.676897"
+                      stop-color="#CFB0F8"
+                    />
                   </linearGradient>
                 </defs>
               </svg>
@@ -99,8 +110,14 @@ export default function Home() {
                     gradientUnits="userSpaceOnUse"
                   >
                     <stop stop-color="#6B28BB" />
-                    <stop offset="0.465" stop-color="#B381F2" />
-                    <stop offset="1" stop-color="#F0E6FE" />
+                    <stop
+                      offset="0.465"
+                      stop-color="#B381F2"
+                    />
+                    <stop
+                      offset="1"
+                      stop-color="#F0E6FE"
+                    />
                   </linearGradient>
                 </defs>
               </svg>
@@ -131,8 +148,14 @@ export default function Home() {
                     gradientUnits="userSpaceOnUse"
                   >
                     <stop stop-color="#9855E9" />
-                    <stop offset="0.505208" stop-color="#CFB0F8" />
-                    <stop offset="1" stop-color="#F0E6FE" />
+                    <stop
+                      offset="0.505208"
+                      stop-color="#CFB0F8"
+                    />
+                    <stop
+                      offset="1"
+                      stop-color="#F0E6FE"
+                    />
                   </linearGradient>
                 </defs>
               </svg>
@@ -218,21 +241,30 @@ export default function Home() {
               </div>
               <div className="md:hidden">
                 <div className="carousel w-full">
-                  <div id="item1" className="carousel-item w-full">
+                  <div
+                    id="item1"
+                    className="carousel-item w-full"
+                  >
                     <LandingPageCard
                       icon={tasksIcon}
                       title="Seguimiento de Tareas y Ganancias"
                       content="Los padres pueden marcar las tareas completadas a medida que las realizan. Cada tarea completada les otorga una cantidad específica de dinero virtual, que se acumula en su cuenta."
                     ></LandingPageCard>
                   </div>
-                  <div id="item2" className="carousel-item w-full">
+                  <div
+                    id="item2"
+                    className="carousel-item w-full"
+                  >
                     <LandingPageCard
                       icon={listIcon}
                       title="Asignación de Tareas: "
                       content="El maestro en conjunto con los padres pueden asignar tareas domésticas a sus hijos directamente a través de la aplicación. Desde hacer la cama hasta ayudar con la limpieza, las tareas se pueden personalizar según las necesidades y la edad del niño."
                     ></LandingPageCard>
                   </div>
-                  <div id="item3" className="carousel-item w-full">
+                  <div
+                    id="item3"
+                    className="carousel-item w-full"
+                  >
                     <LandingPageCard
                       icon={cartIcon}
                       title="Canje de Recompensas:"
@@ -241,13 +273,22 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex justify-center w-full py-2 gap-2">
-                  <a href="#item1" className="btn btn-xs bg-[#5D269A]">
+                  <a
+                    href="#item1"
+                    className="btn btn-xs bg-[#5D269A]"
+                  >
                     1
                   </a>
-                  <a href="#item2" className="btn btn-xs bg-[#5D269A]">
+                  <a
+                    href="#item2"
+                    className="btn btn-xs bg-[#5D269A]"
+                  >
                     2
                   </a>
-                  <a href="#item3" className="btn btn-xs bg-[#5D269A]">
+                  <a
+                    href="#item3"
+                    className="btn btn-xs bg-[#5D269A]"
+                  >
                     3
                   </a>
                 </div>
@@ -321,7 +362,10 @@ export default function Home() {
                   filterUnits="userSpaceOnUse"
                   color-interpolation-filters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feFlood
+                    flood-opacity="0"
+                    result="BackgroundImageFix"
+                  />
                   <feColorMatrix
                     in="SourceAlpha"
                     type="matrix"
@@ -330,7 +374,10 @@ export default function Home() {
                   />
                   <feOffset dy="4" />
                   <feGaussianBlur stdDeviation="2" />
-                  <feComposite in2="hardAlpha" operator="out" />
+                  <feComposite
+                    in2="hardAlpha"
+                    operator="out"
+                  />
                   <feColorMatrix
                     type="matrix"
                     values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"
@@ -356,8 +403,14 @@ export default function Home() {
                   gradientUnits="userSpaceOnUse"
                 >
                   <stop stop-color="#9855E9" />
-                  <stop offset="0.505208" stop-color="#B381F2" />
-                  <stop offset="1" stop-color="#F0E6FE" />
+                  <stop
+                    offset="0.505208"
+                    stop-color="#B381F2"
+                  />
+                  <stop
+                    offset="1"
+                    stop-color="#F0E6FE"
+                  />
                 </linearGradient>
               </defs>
             </svg>
