@@ -1,3 +1,5 @@
+import { useSession, getSession } from 'next-auth/react';
+
 import { Chakra_Petch } from 'next/font/google';
 import Link from 'next/link';
 import API from '../services/API';
@@ -7,7 +9,8 @@ import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 
 import ErrorMessage from '../components/ErrorMessage';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { useSearchParams } from 'next/navigation';
 import { ToastContainer, toast, Zoom } from 'react-toastify';
@@ -19,6 +22,9 @@ const chakra = Chakra_Petch({
 });
 
 export default function Page() {
+  const router = useRouter();
+  const { data: session, status } = useSession();
+
   const {
     register,
     watch,
@@ -29,26 +35,42 @@ export default function Page() {
 
   const onSubmit = async (data) => {
     try {
-      delete data.confirmPassword;
-      const user = { ...data, role: '6676ee3c23f3b664bbf5f50d', user: null };
+      delete data?.confirmPassword;
+      const user = { ...data, role: '667653a1d8f008e63c6b6a0b' };
 
-      const response = await API.createNewUser(user);
+      const signUpRes = await API.createNewUser(user);
 
-      if (response.message === 'Success') {
-        reset();
+      if (signUpRes?.message === 'Success') {
+        const resAuth = await signIn('credentials', {
+          email: signUpRes?.data.email,
+          password: user.password,
+          redirect: false,
+        });
+
+        if (resAuth?.ok) {
+          return router.push('/dashboard');
+        }
+
+        if (resAuth?.error) {
+          notify(resAuth.error.message || resAuth.error.toString());
+          reset();
+        }
       } else {
-        alert(response.message);
+        notify(signUpRes?.message);
+        reset();
       }
     } catch (e) {
-      console.error(e);
+      notify(e.message || e.toString());
+      reset();
     }
   };
 
   const searchParams = useSearchParams();
+
   const error = searchParams.get('error');
 
-  const notify = () =>
-    toast.error(error, {
+  const notify = (msg) =>
+    toast.error(msg, {
       position: 'top-center',
       autoClose: 3000,
       hideProgressBar: false,
@@ -61,8 +83,16 @@ export default function Page() {
     });
 
   useEffect(() => {
-    if (error) notify();
-  }, [searchParams]);
+    if (error) setTimeout(() => notify(error), 1000);
+  }, [error]);
+
+  if (status === 'loading') {
+    return <p>Loading...</p>;
+  }
+
+  if (status === 'authenticated') {
+    return router.push('/dashboard');
+  }
 
   return (
     <div className="flex flex-col xl:flex-row-reverse xl:min-h-screen w-screen">
@@ -212,8 +242,6 @@ export default function Page() {
             />
           </label>
 
-          {errors?.email && <ErrorMessage msg={errors?.email.message} />}
-
           <label className="input input-bordered flex items-center gap-2 w-full bg-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -315,7 +343,7 @@ export default function Page() {
         <button
           type="button"
           class="mb-3 py-2 px-4 flex justify-center items-center relative *:hover:absolute *:hover:start-1/2 *:hover:transform *:hover:-translate-x-1/2  *:hover:ease-in *:hover:duration-200 hover:bg-purple-600 hover:text-purple-600 transition ease-in duration-200 text-center text-purple-600 text-base font-semibold border border-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-xl border-3 w-80"
-          onClick={() => signIn('google')}
+          onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
