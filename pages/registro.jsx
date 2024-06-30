@@ -170,10 +170,10 @@ export default function Page() {
               className="grow bg-white"
               placeholder="Apellido"
               {...register('last_name', {
-                required: 'El nombre es necesario.',
+                required: 'El apellido es necesario.',
                 pattern: {
                   value: /^\S*$/,
-                  message: 'No parece un nombre válido.',
+                  message: 'No parece un apellido válido.',
                 },
               })}
             />
@@ -237,8 +237,12 @@ export default function Page() {
                   value: 8,
                   message: 'Se nececitan mínimo 8 caracteres.',
                 },
-                pattern:
-                  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
+                pattern: {
+                  value:
+                    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
+                  message:
+                    'Son necesarios mínimo ocho caracteres, al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.',
+                },
               })}
             />
           </label>
